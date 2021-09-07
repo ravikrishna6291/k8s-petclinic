@@ -1,12 +1,12 @@
 FROM maven:3.6.3-openjdk-11 AS maven
-RUN apt-get update -y && apt-get upgrade -y && apt-get install git -y && apt-get install unzip -y
+RUN yum update -y && yum upgrade -y && yum install git -y && yum install unzip -y
 WORKDIR /opt
-RUN wget https://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.50/bin/apache-tomcat-9.0.50-windows-x64.zip
-RUN  unzip apache-tomcat-9.0.50-windows-x64.zip
-RUN mv apache-tomcat-9.0.50 tomcat
+RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.52/bin/apache-tomcat-9.0.52-windows-x64.zip
+RUN  unzip apache-tomcat-9.0.52-windows-x64.zip
+RUN mv apache-tomcat-9.0.52 tomcat
 RUN chmod -R 700 tomcat
 WORKDIR /opt
-RUN git clone https://github.com/nages103/spring-framework-petclinic.git
+RUN git clone https://github.com/ravikrishna6291/spring-framework-petclinic.git
 WORKDIR /opt/spring-framework-petclinic
 RUN mvn clean package
 WORKDIR /opt/spring-framework-petclinic/target
